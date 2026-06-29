@@ -1,14 +1,16 @@
+package circularqueue1;
+
 class CircularQueue {
 
-    int arr[] = new int[5];
+    String arr[] = new String[5];
     int front = -1;
     int rear = -1;
 
-    // ENQUEUE
-    void enqueue(int data) {
+    // Enqueue
+    void enqueue(String data) {
 
         if ((rear + 1) % 5 == front) {
-            System.out.println("Queue Overflow");
+            System.out.println("Queue Full");
             return;
         }
 
@@ -19,15 +21,15 @@ class CircularQueue {
         arr[rear] = data;
     }
 
-    // DEQUEUE
-    int dequeue() {
+    // Dequeue
+    String dequeue() {
 
         if (front == -1) {
-            System.out.println("Queue Underflow");
-            return -1;
+            System.out.println("Queue Empty");
+            return null;
         }
 
-        int value = arr[front];
+        String value = arr[front];
 
         if (front == rear) {
             front = rear = -1;
@@ -38,17 +40,18 @@ class CircularQueue {
         return value;
     }
 
-    // DISPLAY
+    // Display
     void display() {
 
         if (front == -1) {
-            System.out.println("Queue is Empty");
+            System.out.println("Queue Empty");
             return;
         }
 
         int i = front;
 
         while (true) {
+
             System.out.print(arr[i] + " ");
 
             if (i == rear)
@@ -61,38 +64,30 @@ class CircularQueue {
     }
 }
 
-// MAIN CLASS
 public class Main {
 
     public static void main(String[] args) {
 
         CircularQueue q = new CircularQueue();
 
-        q.enqueue(10);
+        System.out.println("Enqueue Doc1");
+        q.enqueue("Doc1");
         q.display();
 
-        q.enqueue(20);
+        System.out.println("Enqueue Doc2");
+        q.enqueue("Doc2");
         q.display();
 
-        q.enqueue(30);
+        System.out.println("Enqueue Doc3");
+        q.enqueue("Doc3");
         q.display();
 
-        q.enqueue(40);
-        q.display();
-
-        q.enqueue(50);
-        q.display();
-
+        System.out.println("Dequeue (Doc1 Finished)");
         q.dequeue();
         q.display();
 
-        q.dequeue();
-        q.display();
-
-        q.enqueue(60);
-        q.display();
-
-        q.enqueue(70);
+        System.out.println("Enqueue Doc4");
+        q.enqueue("Doc4");
         q.display();
     }
 }
